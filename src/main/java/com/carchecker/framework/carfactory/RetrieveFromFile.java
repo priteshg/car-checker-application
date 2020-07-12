@@ -20,13 +20,6 @@ public class RetrieveFromFile {
         try (Stream<String> stream = Files.lines(Paths.get(fileName)).skip(1)) {
             stream.forEach(line -> {
                 String[] fields = line.split(",");
-                if (fields.length < 5) {
-                    try {
-                        throw new Exception("Field is not in the correct format:" + line);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
                 carDetailsMap.put(fields[0],
                         Optional.of(new CarDetails.Builder()
                                 .make(fields[1])
